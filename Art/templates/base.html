@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'ART Gallery/favicon.ico' %}">
+    <title>Art</title>
+    <link rel="stylesheet" href="{%static 'Bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{%static 'ART Gallery/base.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid" >
+            <div class="ms-0" id="art">
+            <a class="navbar-brand text-dark ps-3"  href="#">Art</a>
+            </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active text-dark" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item text-dark" href="#">Action</a></li>
+                  <li><a class="dropdown-item text-dark" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item text-dark" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex w-100" role="search" method = "POST">
+                {% csrf_token %}
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success text-dark" type="submit">Search</button>
+            </form>
+            <div class="contianer ms-3 " id="nav-img">
+            <img class="" src="{%static 'ART Gallery/favicon-32x32.png'%}" alt="profile_img" >
+            </div>
+        </div>
+        </div>
+      </nav>
+
+      {%block content%}
+      {% endblock%}
+
+      <script src="{% static 'Bootstrap/js/bootstrap.js' %}"></script>
+</body>
+</html>

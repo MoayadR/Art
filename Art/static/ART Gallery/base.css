@@ -1,0 +1,21 @@
+#nav-img :hover{
+    border: 4px;
+    border-radius: 25px;
+    border-style:groove;
+}
+
+#nav-img img{
+    border-radius: 25px;
+}
+
+#art {
+ align-items: center;
+ text-align: center;
+}
+
+#art:hover{
+    border: 4px;
+    border-radius: 25px;
+    border-style:groove;
+}
+
