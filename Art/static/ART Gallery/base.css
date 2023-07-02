@@ -1,7 +1,7 @@
-#nav-img :hover{
+#nav-img:hover{
     border: 4px;
     border-radius: 25px;
-    border-style:groove;
+    border-style: groove;
 }
 
 #nav-img img{
@@ -16,6 +16,58 @@
 #art:hover{
     border: 4px;
     border-radius: 25px;
-    border-style:groove;
+    background-color: grey;
 }
 
+
+:root {
+    --card_width: 250px;
+    --row_increment: 10px;
+    --card_border_radius: 16px;
+    --carde_small: 26;
+    --carde_med: 33;
+    --carde_large: 45;
+}
+.art_container {
+    margin: 0;
+    padding: 0;
+    width: 80vw;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--card_width));
+    grid-auto-rows: var(--row_increment);
+    justify-content: center;
+
+}
+
+.carde {
+    padding: 0;
+    margin: 15px 10px;
+    border-radius: var(--card_border_radius);
+
+}
+
+.carde_small {
+    grid-row-end: span var(--carde_small);
+}
+
+.carde_medium {
+    grid-row-end: span var(--carde_medium);
+}
+
+.carde_large {
+    grid-row-end: span var(--carde_large);
+}
+
+.img {
+    border-radius: 25px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.img:hover{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+}
