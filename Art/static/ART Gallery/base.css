@@ -1,3 +1,11 @@
+ul{
+    text-decoration: none;
+}
+
+li{
+    text-decoration: none;
+}
+
 #nav-img:hover{
     border: 4px;
     border-radius: 25px;
