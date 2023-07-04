@@ -36,9 +36,8 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.instance.password = make_password(form.instance.password)
-            user = form.save()
-            login(request,user)
-            return redirect('home')
+            form.save()
+            return redirect('login')
         
         # Invalid Form
         messages.success(request , 'Wrong input type please try again ..')

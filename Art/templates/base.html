@@ -30,15 +30,14 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              Dropdown
+              Create
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item text-dark" href="#">Action</a></li>
-              <li><a class="dropdown-item text-dark" href="#">Another action</a></li>
+              <li><a class="dropdown-item text-dark" href="{% url 'create-art'%}">Create Art</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item text-dark" href="#">Something else here</a></li>
+              <li><a class="dropdown-item text-dark" href="{% url 'create-tag'%}">Create Tag</a></li>
             </ul>
           </li>
         </ul>
@@ -81,7 +80,7 @@
   <div class="art-container">
     <div class="carde carde_large">
       {%for post in posts%}
-      <img class="img" src="{{post.art.url}}" style="width: 25%; height: 50%;" alt="{{post.title}}}">
+      <img class="img" src="{{post.art.url}}" style="max-width: 25%; max-height: 25%;" alt="{{post.title}}}">
       {% endfor %}
     </div>
 

@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-import PIL
 
 # Create your models here.
 
@@ -15,9 +14,9 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(null=True , blank= True)
     tags = models.ManyToManyField(Tag)
-    love = models.PositiveIntegerField(default=0)
-    user = models.ForeignKey(User , on_delete=models.CASCADE)
-    art = models.ImageField()
+    love = models.PositiveIntegerField(default=0 , blank=True)
+    user = models.ForeignKey(User , on_delete=models.CASCADE , blank=True , null=False)
+    art = models.ImageField(blank=False , null=False)
 
     def __str__(self):
         return self.title

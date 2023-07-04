@@ -8,8 +8,10 @@ class LoginForm(forms.Form):
 
 class RegisterForm(ModelForm):
     field_order = ['username' , 'email' , 'password']
-    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
         fields = '__all__'
         exclude = ['groups' , 'user_permissions' , 'is_staff' , 'is_active' , 'is_superuser' , 'last_login' , 'date_joined']
+        widgets = {
+            'password' : forms.PasswordInput
+        }
