@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.decorators import login_required
-from .models import Post
+from .models import Post , Tag
 from .forms import PostForm , TagForm
 from django.contrib import messages
 import PIL
@@ -27,7 +27,7 @@ def createArt(request):
     # GET method
     form = PostForm()
     context = {'form' : form}
-    return render(request , 'Posts/create.html' , context)
+    return render(request , 'Posts/create-post.html' , context)
 
 @login_required(login_url='login')
 def createTag(request):
@@ -35,7 +35,12 @@ def createTag(request):
         form = TagForm(request.POST)
         if form.is_valid():
             title = str(form.cleaned_data['title'])
-            title = title.lower()
+            title = title.capitalize()
+            
+            checkObject = Tag.objects.filter(title = title)
+            if checkObject.exists():
+                return redirect('home')
+
             form.instance.title = title
             form.save()
             return redirect('home')
@@ -43,4 +48,4 @@ def createTag(request):
     # GET Method
     form = TagForm()
     context = {'form':form}
-    return render(request , 'Posts/create.html' , context)
+    return render(request , 'Posts/create-tag.html' , context)

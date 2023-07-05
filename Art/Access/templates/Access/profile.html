@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{%block title%}
+Profile
+{%endblock%}
+
+{%block content%}
+<div class="container-fluid">
+<div class="card" style="width: 100%; align-items: center;">
+    <img src="{{request.user.profile_data.profile_pic.url}}" style="max-width: 20%;" class="card-img-top" alt="profile_img">
+    <div class="card-body">
+      <h5 class="card-title">@{{request.user.username}}</h5>
+      <p class="card-title"><b>{{request.user.email}}</b></p>
+      <p class="card-text">{{request.user.profile_data.bio}}</p>
+      <a href="{%url 'edit-profile' %}" class="btn btn-primary">Edit Profile</a>
+      <a href="" class="btn btn-primary">Edit Account</a>
+    </div>
+  </div>
+</div>
+
+  <hr>
+
+  <div class="art-container">
+    <div class="carde carde_large">
+      {%for post in posts%}
+      <img class="img" src="{{post.art.url}}" style="max-width: 25%; max-height: 25%; margin: 2%;" alt="{{post.title}}}">
+      {% endfor %}
+    </div>
+
+
+{%endblock%}

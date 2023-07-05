@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Profile_Data
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=191)
@@ -14,4 +15,14 @@ class RegisterForm(ModelForm):
         exclude = ['groups' , 'user_permissions' , 'is_staff' , 'is_active' , 'is_superuser' , 'last_login' , 'date_joined']
         widgets = {
             'password' : forms.PasswordInput
+        }
+
+
+class DataForm(ModelForm):
+    class Meta:
+        model = Profile_Data
+        fields = '__all__'
+        widgets = {
+            'male' :forms.CheckboxInput(),
+            'female' :forms.CheckboxInput(),
         }

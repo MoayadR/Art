@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
+
 {%block title%}
-Create Post
+Edit Profile
 {%endblock%}
 
-
 {%block content%}
+
 <form class="m-3" action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {% for field in form %}
-        {% if field.name != "user" %}
-        {{field | as_crispy_field}}
-        {%endif%}
-    {% endfor%}
-    <button type="submit" class="btn btn-primary w-10 text-center m-3 ms-0" value="Post">Post</button>
+    {% if field.name != "user" %}
+    {{field | as_crispy_field}}
+    {% endif %}
+    {%endfor%}
+    <button type="submit" class="btn btn-primary w-10 text-center m-3 ms-0" value="Update">Update</button>
 </form>
 
 

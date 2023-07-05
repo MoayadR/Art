@@ -46,8 +46,11 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-secondary text-dark" type="submit">Search</button>
         </form>
+
         <div class="contianer ms-3 " id="nav-img">
-          <img class="" src="{%static 'ART Gallery/favicon-32x32.png'%}" alt="profile_img">
+          <a href="{%url 'profile'%}">
+          <img class="p-1" style="max-width: 32px; max-height: 32px;" src="{{request.user.profile_data.profile_pic.url}}" alt="profile_img">
+          </a>
         </div>
 
         <div class="btn-group ms-2">
@@ -80,7 +83,7 @@
   <div class="art-container">
     <div class="carde carde_large">
       {%for post in posts%}
-      <img class="img" src="{{post.art.url}}" style="max-width: 25%; max-height: 25%;" alt="{{post.title}}}">
+      <img class="img" src="{{post.art.url}}" style="max-width: 25%; max-height: 25%; margin: 2%;" alt="{{post.title}}}">
       {% endfor %}
     </div>
 
