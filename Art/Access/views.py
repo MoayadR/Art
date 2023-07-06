@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.hashers import make_password  
 from .models import Profile_Data
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from Posts.models import Post
 
@@ -42,8 +43,8 @@ def register(request):
             form.instance.password = make_password(form.instance.password)
             user = form.save()
             data = Profile_Data(user = user)
-            data.save()
-            return redirect('login')
+            userProfile = data.save()
+            return redirect('create-profile' , userID = user.id)
         
         # Invalid Form
         messages.success(request , 'Wrong input type please try again ..')
@@ -61,6 +62,19 @@ def logoutUser(request):
 def showProfile(request):
     posts = Post.objects.filter(user = request.user)
     return render(request , 'Access/profile.html' , {'posts' : posts})
+
+def createProfile(request , userID):
+    user = User.objects.get(id = userID)
+
+    if request.method == 'POST':
+        form = DataForm(request.POST , request.FILES , instance=user.profile_data)
+        if form.is_valid():
+           form.instance.user = user
+           form.save()
+           return redirect('login')
+    #GET method
+    form = DataForm(instance=user.profile_data)
+    return render(request , 'Access/edit-profile.html' , {'form' : form})
 
 
 @login_required(login_url = 'login')
