@@ -17,12 +17,15 @@ class RegisterForm(ModelForm):
             'password' : forms.PasswordInput
         }
 
+CHOICES = [
+    (True , 'Male'),
+    (False , 'Female'),
+]
 
 class DataForm(ModelForm):
     class Meta:
         model = Profile_Data
         fields = '__all__'
         widgets = {
-            'male' :forms.CheckboxInput(),
-            'female' :forms.CheckboxInput(),
+            'gender':forms.RadioSelect(choices=CHOICES)
         }

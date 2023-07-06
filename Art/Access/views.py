@@ -66,7 +66,7 @@ def showProfile(request):
 @login_required(login_url = 'login')
 def editProfile(request):
     if request.method == 'POST':
-        form = DataForm(request.POST , instance=request.user.profile_data)
+        form = DataForm(request.POST ,request.FILES, instance=request.user.profile_data)
         if form.is_valid():
             form.instance.user = request.user
             form.save()
