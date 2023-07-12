@@ -41,12 +41,12 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex w-100" role="search" method="POST">
-          {% csrf_token %}
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        {% block search%}
+        <form class="d-flex w-100" role="search" method="GET">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
           <button class="btn btn-outline-secondary text-dark" type="submit">Search</button>
         </form>
-
+        {% endblock %}
         <div class="contianer ms-3 " id="nav-img">
           <a href="{%url 'profile'%}">
           <img class="p-1" style="max-width: 32px; max-height: 32px;" src="{{request.user.profile_data.profile_pic.url}}" alt="profile_img">
@@ -59,7 +59,6 @@
             <span class="sr-only"></span>
           </button>
           <div class="dropdown-menu dropdown-menu-end">
-            <a class="dropdown-item " href="#">Action</a>
             <a class="dropdown-item " href="{%url 'logout' %}">Logout</a>
           </div>
         </div>
@@ -83,7 +82,10 @@
   <div class="art-container">
     <div class="carde carde_large">
       {%for post in posts%}
-      <img class="img" src="{{post.art.url}}" style="max-width: 25%; max-height: 25%; margin: 2%;" alt="{{post.title}}}">
+      <a href="view-art/{{post.id}}"><img class="img" src="{{post.art.url}}" style="max-width: 25%; max-height: 25%; margin: 2%;" alt="{{post.title}}}"></a>
+      <a href="view-profile/{{post.user.id}}"><img style="max-width: 25px; border-radius: 25px; margin: 2%;" src="{{post.user.profile_data.profile_pic.url}}" alt=""></a>
+      <span>{{post.title}}</span>
+        
       {% endfor %}
     </div>
 

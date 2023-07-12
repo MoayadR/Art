@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{%block title%}
+Edit Profile
+{%endblock%}
+
+{%block search%}
+{%endblock%}
+
+{%block content%}
+
+<div class="container-fluid">
+    <form action="" method="POST">
+        {%csrf_token%}
+        <div class="mb-3">
+            <label for="last_name" class="form-label">First Name</label>
+            <input type="text" name="last_name" class="form-control" id="last_name" placeholder="{{request.user.last_name}}">
+            <button type="submit" class="btn btn-primary w-10 text-center m-3 ms-0" value="Change">Change</button>
+        </div>
+</div>
+
+{%endblock%}

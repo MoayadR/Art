@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{%block title%}
+Edit Profile
+{%endblock%}
+
+{%block search%}
+{%endblock%}
+
+{%block content%}
+
+<table class="table ">
+    <tbody>
+       <tr>
+        <td>First Name:</td>
+        <td>{{request.user.first_name}}</td>
+        <td><a href="{% url 'edit-account-first-name' %}">Edit</a></td>
+       </tr>
+
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+       <tr>
+        <td>Last Name:</td>
+        <td>{{request.user.last_name}}</td>
+        <td><a href="{% url 'edit-account-last-name' %}">Edit</a></td>
+       </tr>
+
+       <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+        
+       <tr>
+        <td>Email</td>
+        <td>{{request.user.email}}</td>
+        <td><a href="{% url 'edit-account-email' %}">Edit</a></td>
+       </tr>
+        
+       <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+       <tr>
+        <td>Password:</td>
+        <td>************</td>
+        <td><a href="{% url 'edit-account-password' %}">Edit</a></td>
+       </tr>
+
+    </tbody>
+  </table>
+
+{%endblock%}

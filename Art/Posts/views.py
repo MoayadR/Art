@@ -4,11 +4,18 @@ from .models import Post , Tag
 from .forms import PostForm , TagForm
 from django.contrib import messages
 import PIL
+from django.contrib.auth.models import User
 
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
-    post = Post.objects.all()
+    searchTags = request.GET.get('search')
+    if searchTags:
+        tagsSet = Tag.objects.filter(title = searchTags)
+        post = Post.objects.filter(tags__in = tagsSet)     
+    else:
+        post = Post.objects.all()
+    
     context = {'posts' :post}
     return render(request, 'base.html' , context)
 
@@ -49,3 +56,28 @@ def createTag(request):
     form = TagForm()
     context = {'form':form}
     return render(request , 'Posts/create-tag.html' , context)
+
+
+@login_required(login_url='login')
+def viewProfile(request , id):
+    user = User.objects.get(id = id)
+
+    if user:
+        posts = Post.objects.filter(user = user)
+        return render(request , 'Posts/view-profile.html' , {'posts':posts , 'user':user})
+    
+    #Else
+    messages.success(request, 'This user doesn\'t exist')
+    return render('home')
+
+@login_required(login_url='login')
+def viewArt(request , id):
+    art = Post.objects.get(id = id)
+
+    if art:
+        posts =Post.objects.filter(tags__in = art.tags.all())
+        return render(request , 'Posts/view-art.html' , {'posts':posts , 'art':art})
+
+    # Else
+    messages.success(request, 'This Art doesn\'t exist')
+    return render('home')

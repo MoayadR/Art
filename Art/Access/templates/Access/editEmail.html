@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{%block title%}
+Edit Profile
+{%endblock%}
+
+{%block search%}
+{%endblock%}
+
+{%block content%}
+
+<div class="container-fluid">
+    <form action="" method="POST">
+        {%csrf_token%}
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="{{request.user.email}}">
+            <button type="submit" class="btn btn-primary w-10 text-center m-3 ms-0" value="Change">Change</button>
+          </div>
+</div>
+
+{%endblock%}

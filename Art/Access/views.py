@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth import logout ,login ,authenticate
-from .forms import LoginForm , RegisterForm , DataForm
+from .forms import LoginForm , RegisterForm , DataForm  
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password  
 from .models import Profile_Data
@@ -43,7 +43,8 @@ def register(request):
             form.instance.password = make_password(form.instance.password)
             user = form.save()
             data = Profile_Data(user = user)
-            userProfile = data.save()
+            data.save()
+            login(request , user)
             return redirect('create-profile' , userID = user.id)
         
         # Invalid Form
@@ -71,7 +72,7 @@ def createProfile(request , userID):
         if form.is_valid():
            form.instance.user = user
            form.save()
-           return redirect('login')
+           return redirect('home')
     #GET method
     form = DataForm(instance=user.profile_data)
     return render(request , 'Access/edit-profile.html' , {'form' : form})
@@ -89,3 +90,59 @@ def editProfile(request):
     # GET Request
     form = DataForm(instance=request.user.profile_data)
     return render(request , 'Access/edit-profile.html' , {'form' : form})
+
+@login_required(login_url = 'login')
+def editAccount(request):
+    return render(request , 'Access/edit-account.html')
+
+@login_required(login_url = 'login')
+def editFirstName(request):
+    if request.method == 'POST':
+        firstName = request.POST['first_name']
+        user = request.user
+        user.first_name = firstName
+        user.save()
+        return redirect('edit-account')
+
+    return render(request , 'Access/editFirstName.html')
+
+@login_required(login_url = 'login')
+def editLastName(request):
+    if request.method == 'POST':
+        lastName = request.POST['last_name']
+        user = request.user
+        user.last_name = lastName
+        user.save()
+        return redirect('edit-account')
+
+    return render(request , 'Access/editLastName.html')
+
+@login_required(login_url = 'login')
+def editEmail(request):
+    if request.method == 'POST':
+        Email = request.POST['email']
+        user = request.user
+        user.email = Email
+        user.save()
+        return redirect('edit-account')
+
+    return render(request , 'Access/editEmail.html')
+
+
+@login_required(login_url = 'login')
+def editPassword(request):
+    if request.method == 'POST':
+        inputPassword = request.POST['password']
+        inputRePassword = request.POST['re-password']
+        if inputPassword == inputRePassword:
+            inputPassword = make_password(inputPassword)
+            user = request.user
+            user.password = inputPassword
+            user.save()
+            return redirect('edit-account')
+           
+        #else
+        messages.success(request,'The Two Passwords don\'t match')
+        return redirect('edit-account')
+
+    return render(request , 'Access/editPassword.html')

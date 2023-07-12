@@ -12,13 +12,10 @@ Profile
 {%block content%}
 <div class="container-fluid">
 <div class="card" style="width: 100%; align-items: center;">
-    <img src="{{request.user.profile_data.profile_pic.url}}" style="max-width: 20%;" class="card-img-top" alt="profile_img">
+    <img src="{{user.profile_data.profile_pic.url}}" style="max-width: 20%;" class="card-img-top" alt="profile_img">
     <div class="card-body">
-      <h5 class="card-title">@{{request.user.username}}</h5>
-      <p class="card-title"><b>{{request.user.email}}</b></p>
-      <p class="card-text">{{request.user.profile_data.bio}}</p>
-      <a href="{%url 'edit-profile' %}" class="btn btn-primary">Edit Profile</a>
-      <a href="{% url 'edit-account'%}" class="btn btn-primary">Edit Account</a>
+      <p class="card-title"><b>{{user.email}}</b></p>
+      <p class="card-text">{{user.profile_data.bio}}</p>
     </div>
   </div>
 </div>
