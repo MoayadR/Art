@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'Posts.apps.PostsConfig',
     'Access.apps.AccessConfig',
     'crispy_forms',
+    "api.apps.ApiConfig",
 ]
 
 MIDDLEWARE = [

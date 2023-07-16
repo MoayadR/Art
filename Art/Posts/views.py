@@ -42,7 +42,7 @@ def createTag(request):
         form = TagForm(request.POST)
         if form.is_valid():
             title = str(form.cleaned_data['title'])
-            title = title.capitalize()
+            title = title.lower()
             
             checkObject = Tag.objects.filter(title = title)
             if checkObject.exists():

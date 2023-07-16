@@ -1,5 +1,6 @@
 ul{
     text-decoration: none;
+    list-style-type: none;
 }
 
 li{
@@ -78,4 +79,25 @@ li{
 
 .img:hover{
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+}
+
+.recommend{
+    margin-left: 10%;
+    width: 78.3%;
+    align-items: center;
+    text-align: center;
+}
+
+.recommend ul{
+    width: 100%;
+    padding: 0px;
+    border: 2px solid aliceblue;
+}
+
+.recommend li {
+    width: 100%;
+}
+
+.recommend li:hover {
+    background-color: aliceblue;
 }
