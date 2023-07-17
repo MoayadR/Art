@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block links %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{%static 'ART Gallery/view-art/view-art.css' %}">
+{% endblock %}
 
 {%block title%}
 Profile
@@ -14,9 +19,22 @@ Profile
 <div class="card" style="width: 100%; align-items: center;">
     <img src="{{art.art.url}}" style="max-width: 20%;" class="card-img-top" alt="profile_img">
     <div class="card-body">
-      <p class="card-title"><b>{{art.title}}</b></p>
+      <p class="card-title"><b>{{art.title}} <i class="fa fa-heart" style="font-size:28px;color:red"></i> {{art.love}}</b></p>
       <p class="card-text">{{art.description}}</p>
     </div>
+  </div>
+
+  <div class="card" style="width: 100%;">
+    <h3 style="text-align: center;">Comments</h3>
+    <div class="card-body">
+      {% for comment in comments%}
+      <a href={% url 'view-profile' comment.user.id %}><img src="{{comment.user.profile_data.profile_pic.url}}" class="me-3 mb-3" style="width: 32px; max-height: 32px; border-radius: 25px;" alt="comment author"></a>
+      <span class="mb-3">{{comment.text}}</span>
+      <br>
+      {%endfor%}
+    </div>
+    <textarea name="comment" id="commentInput" cols="30" rows="10"></textarea>
+    <button  id="commentButton" class="mt-2 ms-2">Comment</button>
   </div>
 </div>
 
@@ -25,9 +43,11 @@ Profile
   <div class="art-container">
     <div class="carde carde_large">
       {%for post in posts%}
-      <img class="img" src="{{post.art.url}}" style="max-width: 25%; max-height: 25%; margin: 2%;" alt="{{post.title}}}">
+      <a href={%url 'view-art' post.id%}><img class="img" src="{{post.art.url}}" style="max-width: 25%; max-height: 25%; margin: 2%;" alt="{{post.title}}}"></a>
       {% endfor %}
     </div>
 
+
+    <script src="{%static 'ART Gallery/view-art/view-art.js' %}"></script>
 
 {%endblock%}

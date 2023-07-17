@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.decorators import login_required
-from .models import Post , Tag
+from .models import Post , Tag , Comment
 from .forms import PostForm , TagForm
 from django.contrib import messages
 import PIL
@@ -72,11 +72,11 @@ def viewProfile(request , id):
 
 @login_required(login_url='login')
 def viewArt(request , id):
-    art = Post.objects.get(id = id)
-
-    if art:
-        posts =Post.objects.filter(tags__in = art.tags.all())
-        return render(request , 'Posts/view-art.html' , {'posts':posts , 'art':art})
+    artItem = Post.objects.get(id = id)
+    comments = Comment.objects.filter(post = artItem)
+    if artItem:
+        posts =Post.objects.filter(tags__in = artItem.tags.all()).exclude(art = artItem.art)
+        return render(request , 'Posts/view-art.html' , {'posts':posts , 'art':artItem , 'comments':comments})
 
     # Else
     messages.success(request, 'This Art doesn\'t exist')
