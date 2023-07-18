@@ -4,6 +4,7 @@
 {% block links %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{%static 'ART Gallery/view-art/view-art.css' %}">
+<link rel="stylesheet" href="{%static 'ART Gallery/view-art/comments.css' %}">
 {% endblock %}
 
 {%block title%}
@@ -26,15 +27,15 @@ Profile
 
   <div class="card" style="width: 100%;">
     <h3 style="text-align: center;">Comments</h3>
-    <div class="card-body">
+    <div class="card-body" id="commentDiv">
       {% for comment in comments%}
-      <a href={% url 'view-profile' comment.user.id %}><img src="{{comment.user.profile_data.profile_pic.url}}" class="me-3 mb-3" style="width: 32px; max-height: 32px; border-radius: 25px;" alt="comment author"></a>
+      <a href={% url 'view-profile' comment.user.id %}><img src="{{comment.user.profile_data.profile_pic.url}}" class="me-3 mb-3 astyle"  alt="comment author"></a>
       <span class="mb-3">{{comment.text}}</span>
       <br>
       {%endfor%}
     </div>
     <textarea name="comment" id="commentInput" cols="30" rows="10"></textarea>
-    <button  id="commentButton" class="mt-2 ms-2">Comment</button>
+    <button onclick="addComment()"  id="commentButton" class="mt-2 ms-2">Comment</button>
   </div>
 </div>
 
