@@ -1,12 +1,14 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from Posts.models import Tag
 from Access.models import Profile_Data
 from django.http import JsonResponse
 from django.core import serializers
 from django.contrib.auth.models import User
-from Art.settings import BASE_DIR
+from Posts.models import Comment
 
 import simplejson as json
+
 # Create your views here.
 
 def showAllTags(request):
@@ -25,3 +27,13 @@ def showMyProfileData(request , id):
     data = Profile_Data.objects.get(user = user)
     data = serializers.serialize("python" , [data])
     return JsonResponse(data , safe=False)
+
+def createComment(request):
+    content = json.loads(request.body)
+    user = request.user
+    commentText = content["text"]
+    postId = content["postID"]
+    
+    Comment.objects.create(text = commentText , user = user , post_id =postId )
+
+    return HttpResponse("Oh yeah")
