@@ -14,13 +14,11 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(null=True , blank= True)
     tags = models.ManyToManyField(Tag)
-    love = models.PositiveIntegerField(default=0 , blank=True)
     user = models.ForeignKey(User , on_delete=models.CASCADE , blank=True , null=False)
     art = models.ImageField(blank=False , null=False)
-
+    love = models.ManyToManyField(User , related_name="lovestable")
     def __str__(self):
         return self.title
-    
 
 class Comment(models.Model):
     text = models.TextField(blank= False , null = False)

@@ -20,7 +20,7 @@ Profile
 <div class="card" style="width: 100%; align-items: center;">
     <img src="{{art.art.url}}" style="max-width: 20%;" class="card-img-top" alt="profile_img">
     <div class="card-body">
-      <p class="card-title"><b>{{art.title}} <i class="fa fa-heart" style="font-size:28px;color:red"></i> {{art.love}}</b></p>
+      <p class="card-title"><b>{{art.title}}</b></p>
       <p class="card-text">{{art.description}}</p>
     </div>
   </div>
@@ -48,7 +48,10 @@ Profile
       {% endfor %}
     </div>
 
+    {%block scripts%}
+        <script src="{%static 'ART Gallery/view-art/view-art.js' %}"></script>
+    {%endblock%}
 
-    <script src="{%static 'ART Gallery/view-art/view-art.js' %}"></script>
+
 
 {%endblock%}

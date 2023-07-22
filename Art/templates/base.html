@@ -44,7 +44,7 @@
         {% block search%}
         <form class="d-flex w-100" role="search" method="GET">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" autocomplete="off" id="search-bar">
-          <button class="btn btn-outline-secondary text-dark" id="search-button" type="submit">Search</button>
+          <button hidden class="btn btn-outline-secondary text-dark" id="search-button" type="submit">Search</button>
         </form>
         {% endblock %}
         <div class="contianer ms-3 " id="nav-img">
@@ -98,7 +98,9 @@
     {% endblock%}
 
     <script src="{% static 'Bootstrap/js/bootstrap.js' %}"></script>
+    {%block scripts%}
     <script src="{% static 'ART Gallery/base.js'%}"></script>
+    {%endblock%}
 </body>
 
 </html>
