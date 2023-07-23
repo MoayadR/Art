@@ -15,4 +15,32 @@
   background-color: #212529;
 }
 
+#author-img{
+  max-width: 40px;
+  border-radius: 25px;
+}
 
+#author-img:hover{
+
+  border: 4px;
+  border-radius: 25px;  
+  border-style:groove;
+  border-color: white;
+}
+
+#heart {
+  color: grey;  
+  font-size: 50px;
+}
+
+#heart.red {
+  color: red;
+}
+
+#love-count{
+  position: relative;
+  top: -10px;
+  left: 10px;
+  font-weight: bold;
+  font-size: larger;
+}

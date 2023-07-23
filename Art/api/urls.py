@@ -6,4 +6,7 @@ urlpatterns = [
     path('user/my-id' , views.showMyID ),
     path('profile-data/<int:id>' , views.showMyProfileData ),
     path('comment/create', views.createComment ),
+    path('post/love/<int:postID>' , views.getUserLove),
+    path('post/love/add/<int:postID>' , views.addUserLove),
+    path('post/love/remove/<int:postID>' , views.removeUserLove),
 ]

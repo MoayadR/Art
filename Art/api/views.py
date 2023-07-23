@@ -5,7 +5,7 @@ from Access.models import Profile_Data
 from django.http import JsonResponse
 from django.core import serializers
 from django.contrib.auth.models import User
-from Posts.models import Comment
+from Posts.models import Comment , Post
 
 import simplejson as json
 
@@ -36,4 +36,23 @@ def createComment(request):
     
     Comment.objects.create(text = commentText , user = user , post_id =postId )
 
-    return HttpResponse("Oh yeah")
+    return HttpResponse("Created Comment Successfully")
+
+
+def getUserLove(request , postID):
+    post = Post.objects.get(id = postID )
+    response = {"status" : False}
+    if request.user in post.love.all():
+        response["status"] = True
+        
+    return JsonResponse(response)
+
+def addUserLove(request , postID):
+    post = Post.objects.get(id = postID )
+    post.love.add(request.user)
+    return JsonResponse({"status":"Added Love"})
+
+def removeUserLove(request , postID):
+    post = Post.objects.get(id = postID )
+    post.love.remove(request.user)
+    return JsonResponse({"status":"Removed Love"})

@@ -18,10 +18,14 @@ Profile
 {%block content%}
 <div class="container-fluid">
 <div class="card" style="width: 100%; align-items: center;">
-    <img src="{{art.art.url}}" style="max-width: 20%;" class="card-img-top" alt="profile_img">
+  <a href={%if art.user == request.user %} {%url 'profile' %}  {%else%} {%url 'view-profile' art.user.id %} {%endif%}><img id="author-img" class="mt-2" src="{{art.user.profile_data.profile_pic.url}}" alt=""></a>
+  <span>@{{art.user.first_name}} {{art.user.last_name}}</span>
+    <img src="{{art.art.url}}" style="max-width: 50%;" class="card-img-top" alt="profile_img">
     <div class="card-body">
       <p class="card-title"><b>{{art.title}}</b></p>
       <p class="card-text">{{art.description}}</p>
+      <i class="fa fa-heart" id="heart" ></i> <span id="love-count">{{art.love.count}}</span>
+      <br>
     </div>
   </div>
 

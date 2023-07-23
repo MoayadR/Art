@@ -50,13 +50,11 @@ addComment = async function () {
     userProfile = userProfile[0];
   }
 
-
   commentText = commentInput.value;
   // Comment Validation
 
-  if(commentText.length == 0)
-  {
-    return undefined
+  if (commentText.length == 0) {
+    return undefined;
   }
 
   // save the comment in the database
@@ -75,8 +73,6 @@ addComment = async function () {
     },
     body: JSON.stringify(data),
   }).then((res) => res);
-
-
 
   // make the comment and make it appear
 
@@ -102,5 +98,61 @@ addComment = async function () {
   commentDiv.append(span);
   commentDiv.append(br);
 
-  commentInput.value = ""
+  commentInput.value = "";
 };
+
+
+
+let splitted = location.pathname.split("/");
+let postID = Number(splitted[splitted.length - 1])
+
+async function addLove(){
+  return fetch("http://127.0.0.1:8000/api/post/love/add/" + postID).then(res => res.json()).then(data => {return data;})
+}
+
+async function removeLove(){
+  return fetch("http://127.0.0.1:8000/api/post/love/remove/" + postID).then(res => res.json()).then(data => {return data;})
+}
+
+
+const heart = document.getElementById("heart");
+const count = document.getElementById("love-count");
+let value = Number(count.innerHTML)
+heart.addEventListener("click",function () {
+  if(heart.classList.contains("red"))
+  {
+    let garbage =  removeLove();
+    heart.classList.remove("red");
+    value -=1
+    count.innerHTML = value
+  }
+  else
+  {
+    let garbage=  addLove();
+    heart.classList.add("red");
+    value+=1
+    count.innerHTML = value
+    console.log("mb2a4 red ya z3em");
+  }
+});
+
+
+
+async function fetchLoveStatus(postID){
+  return fetch("http://127.0.0.1:8000/api/post/love/"+postID).then(res=>res.json()).then(data=> {
+    return data
+  });
+}
+
+async function checkIfLoved(){
+  result = await fetchLoveStatus(postID)
+  if(result["status"] == true)
+  {
+    heart.classList.add("red");
+  }
+
+}
+
+checkIfLoved()
+
+
