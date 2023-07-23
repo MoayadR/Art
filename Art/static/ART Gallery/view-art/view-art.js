@@ -132,7 +132,6 @@ heart.addEventListener("click",function () {
     heart.classList.add("red");
     value+=1
     count.innerHTML = value
-    console.log("mb2a4 red ya z3em");
   }
 });
 
