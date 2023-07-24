@@ -1,0 +1,22 @@
+#div_id_tags{
+    display: none;
+}
+
+ul {
+    border: 2px solid #ced4da;
+    text-align: center;
+    padding: 0;
+}
+ul li{
+    width: 100%;
+    margin: 5px auto;
+}
+
+ul li:hover{
+    transition-duration: 0.5s;
+    background-color:#ced4da ;
+}
+
+#SelectedTags button:hover{
+    background-color: red;
+}

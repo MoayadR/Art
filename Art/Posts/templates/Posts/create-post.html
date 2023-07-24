@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {%block title%}
 Create Post
 {%endblock%}
 
+{% block links %}
+    <link rel="stylesheet" href={%static 'Art Gallery/create-post/createPost.css'%}>
+{% endblock %}
 
 {%block search%}
 {%endblock%}
@@ -13,7 +17,20 @@ Create Post
 <form class="m-3" action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {% for field in form %}
-        {% if field.name != "user" %}
+
+        {% if field.name == "tags"%}
+        <div class="mb-3">
+            <label for="searchForTags" class="form-label">Tags</label>
+            <input type="search" class="form-control" id="searchForTags" placeholder="Search for Tags">
+        </div>
+        <div class="mb-3" id="recommendTag">
+            
+        </div>
+        <div id="SelectedTags">
+        </div>
+        {{field | as_crispy_field}}
+
+        {%elif field.name != "user" %}
         {{field | as_crispy_field}}
         {%endif%}
     {% endfor%}
@@ -24,6 +41,7 @@ Create Post
 </form>
 
 {%block scripts%}
+    <script src={%static "Art Gallery/create-post/createPost.js" %}></script>
 {%endblock%}
 
 {%endblock%}
