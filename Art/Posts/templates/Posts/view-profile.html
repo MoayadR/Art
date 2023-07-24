@@ -25,7 +25,10 @@ Profile
   <div class="art-container">
     <div class="carde carde_large">
       {%for post in posts%}
-      <a href={%url 'view-art' post.id%}><img class="img" src="{{post.art.url}}" style="max-width: 25%; max-height: 25%; margin: 2%;" alt="{{post.title}}}"></a>
+      <div id="posts-container">
+        <a href={%url 'view-art' post.id%}><img class="img" src="{{post.art.url}}" style="max-width: 25%; max-height: 25%; margin: 2%;" alt="{{post.title}}}"></a>
+        <span>{{post.title}}</span>
+      </div>
       {% endfor %}
     </div>
 

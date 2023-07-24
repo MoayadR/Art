@@ -11,10 +11,11 @@ from django.contrib.auth.models import User
 def home(request):
     searchTags = request.GET.get('search')
     if searchTags:
-        tagsSet = Tag.objects.filter(title = searchTags)
-        post = Post.objects.filter(tags__in = tagsSet)     
+        tagsSet = Tag.objects.get(title = searchTags)
+        post = Post.objects.filter(tags = tagsSet)     
     else:
         post = Post.objects.all()
+        # Make Dynamic Feed
     
     context = {'posts' :post}
     return render(request, 'base.html' , context)

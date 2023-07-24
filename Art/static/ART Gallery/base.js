@@ -31,12 +31,23 @@ function selectInput(list){
     btn.click()
 }
 
-bar.onkeyup = function () {
+function debounce(cb , delay = 250){
+  let timeout;
+
+  return () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(()=>{
+      cb()
+    } , delay)
+  }
+}
+
+bar.onkeyup = debounce(()=>{
   var result = [];
   var input = bar.value;
   if (input.length) {
     for (var i = 0; i < values.length; i++) {
-      if (values[i].title.includes(input)) {
+      if (values[i].title.startsWith(input)) {
         result.push(values[i].title);
       }
     }
@@ -45,4 +56,4 @@ bar.onkeyup = function () {
   } else {
     box.innerHTML = "";
   }
-};
+}); 
