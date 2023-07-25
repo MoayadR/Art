@@ -33,7 +33,16 @@ Create Post
         {%elif field.name != "user" %}
         {{field | as_crispy_field}}
         {%endif%}
+
     {% endfor%}
+
+    <div id="file">
+        <label for="id_art" id="label_art">
+            <img src="{%static 'ART Gallery/mona-lisa.jpg'%}" alt="Art">
+            <span class="ms-2">Upload Art</span>
+        </label>
+    </div>
+
     <button type="submit" class="btn btn-primary w-10 text-center m-3 ms-0" value="Post">Post</button>
     <p>
         Didn't find the appropiate tags? <a href="{% url 'create-tag'%}">Create one now!</a>

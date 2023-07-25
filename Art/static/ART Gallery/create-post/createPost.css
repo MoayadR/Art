@@ -2,7 +2,7 @@
     display: none;
 }
 
-ul {
+#recommendTag ul {
     border: 2px solid #ced4da;
     text-align: center;
     padding: 0;
@@ -19,4 +19,26 @@ ul li:hover{
 
 #SelectedTags button:hover{
     background-color: red;
+}
+
+#SelectedTags button{
+    border-radius: 25px;
+}
+
+#div_id_art{
+    display: none;
+}
+
+#label_art{
+    cursor: pointer;
+}
+
+#label_art img{
+    max-width: 30px;
+    border-radius: 25px;
+}
+
+#label_art span{
+    font-weight: bold;
+    color: #212529 ;
 }

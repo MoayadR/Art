@@ -1,0 +1,18 @@
+#id_profile_pic{
+    display: none;
+}
+
+
+#label_art{
+    cursor: pointer;
+}
+
+#label_art img{
+    max-width: 30px;
+    border-radius: 25px;
+}
+
+#label_art span{
+    font-weight: bold;
+    color: #212529 ;
+}

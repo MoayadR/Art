@@ -15,6 +15,7 @@ def home(request):
         post = Post.objects.filter(tags = tagsSet)     
     else:
         post = Post.objects.all()
+
         # Make Dynamic Feed
     
     context = {'posts' :post}
