@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links%}
+<link rel="stylesheet" href="{% static 'ART Gallery/report-post/report.css'%}">
+
+{% endblock%}
+
+{%block title%}
+Report
+{%endblock%}
+
+{%block search%}
+{%endblock%}
+
+
+{%block content%}
+    <div class="container-fluid">
+        <h1>We are very sorry</h1>
+        <p>Please Specify why do you find this art inapproriate</p>
+
+        <form action="" method="POST" id="form">
+            {%csrf_token%}
+            <label for="textarea">The Reason: </label>
+            <br>
+            <textarea name="reason" id="textarea" cols="30" rows="10" ></textarea>
+            <br>
+            <button type="submit">Report</button>
+        </form>
+    </div>
+
+{%block scripts%}
+<script src="{% static 'ART Gallery/report-post/report.js'%}"></script>
+{%endblock%}
+
+{%endblock%}

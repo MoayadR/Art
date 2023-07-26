@@ -28,3 +28,11 @@ class Comment(models.Model):
     def __str__(self):
         return self.user.username
 
+
+class Reported(models.Model):
+    reason = models.TextField()
+    user = models.ForeignKey(User , on_delete=models.DO_NOTHING)
+    post = models.ForeignKey(Post , on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.post.title

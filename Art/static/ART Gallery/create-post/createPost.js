@@ -144,3 +144,42 @@ function debounce(cb , delay = 250){
 
     selectedTagsBox.append(button);
   }
+
+
+
+  
+  function checkForActiveTags(){
+
+    for(let i =0 ; i<checkBoxSelectors.length ; i++)
+    {
+      if(checkBoxSelectors[i].checked === true)
+      {
+        selectInputValue(checkBoxSelectorsNames[i].innerHTML.trim());
+      }
+    }
+  }
+
+
+
+  function selectInputValue(value) // when selected add to buttons div with onclick delete
+  {
+    
+    if(isInSelectedTags(value))
+    {
+        return;
+    }
+
+    selectedTags.push(value);
+    let button = document.createElement("button" );
+    button.type = "button";
+    button.classList.add("btn");
+    button.classList.add("btn-dark");
+    button.classList.add("m-2");
+    button.innerHTML = value;
+    button.addEventListener("click" , deleteFromSelectedInput , false  )
+
+
+    selectedTagsBox.append(button);
+  }
+
+checkForActiveTags()

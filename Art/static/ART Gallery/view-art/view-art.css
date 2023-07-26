@@ -5,7 +5,6 @@
 }
 
 #author-img:hover{
-
   border: 4px;
   border-radius: 25px;  
   border-style:groove;
@@ -27,4 +26,44 @@
   left: 10px;
   font-weight: bold;
   font-size: larger;
+}
+
+
+#modify-div{
+  display: block;
+  width: 100%;
+  text-align: end;
+}
+
+#modify-div button{
+  border-radius: 25px;
+}
+#delBtn{
+  width: 5%;
+  background-color:#fff;
+}
+#delBtn:hover{
+  transition-duration: 0.5s;
+  background-color:red;
+}
+
+
+#changeBtn{
+  width: 5%;
+  background-color:#fff;
+}
+
+#changeBtn:hover{
+  transition-duration: 0.5s;
+  background-color:rgb(251, 255, 0);
+}
+
+#reportBtn{
+  width: 5%;
+  background-color:#fff;
+}
+
+#reportBtn:hover{
+  transition-duration: 0.5s;
+  background-color:red;
 }

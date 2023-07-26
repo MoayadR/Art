@@ -1,0 +1,12 @@
+textarea{
+    width: 50%;
+}
+
+button{
+    background-color: #ffff;
+    border-radius: 25px;
+}
+button:hover{
+    background-color: red;
+    transition-duration: 0.5s;
+}

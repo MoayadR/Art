@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.decorators import login_required
-from .models import Post , Tag , Comment
+from .models import Post , Tag , Comment , Reported
 from .forms import PostForm , TagForm
 from django.contrib import messages
 import PIL
@@ -83,3 +83,44 @@ def viewArt(request , id):
     # Else
     messages.success(request, 'This Art doesn\'t exist')
     return render('home')
+
+@login_required(login_url='login')
+def deleteArt(request , id):
+    Post.objects.get(id = id).delete()
+    return redirect("home")
+
+@login_required(login_url='login')
+def changeArt(request , id):
+    object = Post.objects.get(id = id)
+    if request.method == "POST":
+        form = PostForm(request.POST , instance= object)
+        if form.is_valid():
+            form.instance.user = request.user
+            form.save()
+            return redirect("home")
+
+    # GET
+
+    form = PostForm(instance=object)
+    context = {'form' : form}
+    return render(request , "Posts/create-post.html" , context)
+
+@login_required(login_url='login')
+def reportArt(request,id):
+    if request.method == "POST":
+        reasonValue = request.POST["reason"]
+        if reasonValue:
+            Reported.objects.create(user = request.user , post_id = id , reason = reasonValue)
+        return redirect("home")
+    # GET
+
+    return render(request , "Posts/report.html")
+
+
+@login_required(login_url='login')
+def editComment(request , artID , id):
+    pass
+
+@login_required(login_url='login')
+def deleteComment(request , artID , id):
+    pass
