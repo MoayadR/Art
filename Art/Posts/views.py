@@ -119,8 +119,19 @@ def reportArt(request,id):
 
 @login_required(login_url='login')
 def editComment(request , artID , id):
-    pass
+    object = Comment.objects.get(id = id)
+    if request.method == 'POST':
+        object.text = request.POST["commentText"]
+        if(object.text):
+            object.save()
+
+        return redirect("view-art" , artID)
+
+    #GET method
+
+    return render(request , "Posts/edit-comment.html" , {"comment" : object})
 
 @login_required(login_url='login')
 def deleteComment(request , artID , id):
-    pass
+    object = Comment.objects.get(id = id).delete()
+    return redirect("view-art" , artID)

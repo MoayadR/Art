@@ -51,8 +51,8 @@ Profile
       <span class="mb-3">{{comment.text}}</span>
       
       {% if comment.user == request.user %}
-      <a href=""><img class="comment-img" src="{%static 'ART Gallery/delete.png'%}" alt=""></a>
-      <a href=""><img class="comment-img" src="{%static 'ART Gallery/change.jpg'%}" alt=""></a>
+      <a href="{% url 'delete-comment' art.id comment.id %}"><img class="comment-img" src="{%static 'ART Gallery/delete.png'%}" alt=""></a>
+      <a href="{% url 'edit-comment' art.id comment.id %}"><img class="comment-img" src="{%static 'ART Gallery/change.jpg'%}" alt=""></a>
       {% endif %}
 
       <br>

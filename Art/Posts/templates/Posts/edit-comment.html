@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{%block title%}
+Edit Comment
+{%endblock%}
+
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'ART Gallery/edit-comment/edit-comment.css' %}">
+{% endblock %}
+
+{%block search%}
+{%endblock%}
+
+
+{%block content%}
+
+<form action="" method="POST" id="editCommentForm">
+    {% csrf_token %}
+    <label for="textarea" class="m-2">Comment:</label>
+    <br>
+    <textarea name="commentText" class="m-2" id="textarea" cols="30" rows="10">{{comment.text}}</textarea>
+    <br>
+    <button type="submit" class="btn btn-dark m-2">Change</button>
+</form>
+
+{%endblock%}
+
+
+
+{%block scripts%}
+
+<script src="{% static 'ART Gallery/edit-comment/edit-comment.js' %}"></script>
+{%endblock%}
