@@ -29,6 +29,27 @@ def getDistinctPosts(postList):
         posts.append(item)
     return posts
 
+def randomizeListByTags(postList):
+    hashMap = {}
+    posts = []
+
+    for item in postList:
+        for tag in item.tags.all():
+            if  tag.title in hashMap:
+                hashMap[tag.title].append(item) 
+            else:
+                hashMap[tag.title] = [item]
+                
+    while hashMap:
+        for item in list(hashMap):
+            if hashMap[item]:
+                posts.append(hashMap[item][0])
+                hashMap[item].pop(0)
+            else:
+                hashMap.pop(item)
+        
+    return posts
+
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
@@ -54,7 +75,9 @@ def home(request):
 
         # distinct posts
         post = list(post)
+        post = randomizeListByTags(post)
         post = getDistinctPosts(post)
+        
 
     context = {'posts' :post}
     return render(request, 'base.html' , context)
