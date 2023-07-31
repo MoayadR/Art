@@ -36,3 +36,11 @@ class Reported(models.Model):
 
     def __str__(self):
         return self.post.title
+    
+
+class UserHistoryTags(models.Model):
+    user = models.ForeignKey(User , on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag , on_delete= models.CASCADE)
+
+    def __str__(self):
+        return self.user.username

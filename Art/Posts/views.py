@@ -1,10 +1,33 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.decorators import login_required
-from .models import Post , Tag , Comment , Reported
+from .models import Post , Tag , Comment , Reported , UserHistoryTags
 from .forms import PostForm , TagForm
 from django.contrib import messages
 import PIL
 from django.contrib.auth.models import User
+
+
+def checkUserHistory(request , tag):
+    # limit check
+    userHistory = UserHistoryTags.objects.filter(user = request.user)
+    if userHistory.filter(tag = tag).count() >= 1:
+        return False
+    
+    if userHistory.count()== 10:
+        userHistory[0].delete()
+    
+    return True
+    
+def getDistinctPosts(postList):
+    hashMap = {}
+    posts = []
+
+    for item in postList:
+        if item.art in hashMap:
+            continue
+        hashMap[item.art] = True
+        posts.append(item)
+    return posts
 
 # Create your views here.
 @login_required(login_url='login')
@@ -12,12 +35,27 @@ def home(request):
     searchTags = request.GET.get('search')
     if searchTags:
         tagsSet = Tag.objects.get(title = searchTags)
+        # creating user history search
+        if checkUserHistory(request , tagsSet):
+            UserHistoryTags.objects.create(tag = tagsSet , user = request.user)
         post = Post.objects.filter(tags = tagsSet)     
     else:
-        post = Post.objects.all()
+        post = UserHistoryTags.objects.filter(user = request.user)
+        if post.count() == 0:
+            post = Post.objects.all()
 
-        # Make Dynamic Feed
-    
+        # get list of tags
+        listOfTags = []
+        for object in post.values():
+            listOfTags.append(object['tag_id'])
+
+        # make dynamic query
+        post = Post.objects.filter(tags__in = listOfTags)
+
+        # distinct posts
+        post = list(post)
+        post = getDistinctPosts(post)
+
     context = {'posts' :post}
     return render(request, 'base.html' , context)
 
