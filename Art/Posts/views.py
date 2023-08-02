@@ -64,19 +64,17 @@ def home(request):
         post = UserHistoryTags.objects.filter(user = request.user)
         if post.count() == 0:
             post = Post.objects.all()
-
-        # get list of tags
-        listOfTags = []
-        for object in post.values():
-            listOfTags.append(object['tag_id'])
-
-        # make dynamic query
-        post = Post.objects.filter(tags__in = listOfTags)
-
-        # distinct posts
-        post = list(post)
-        post = randomizeListByTags(post)
-        post = getDistinctPosts(post)
+        else:
+            # get list of tags
+            listOfTags = []
+            for object in post.values():
+                listOfTags.append(object['tag_id'])
+            # make dynamic query
+            post = Post.objects.filter(tags__in = listOfTags)
+            # distinct posts
+            post = list(post)
+            post = randomizeListByTags(post)
+            post = getDistinctPosts(post)
         
 
     context = {'posts' :post}

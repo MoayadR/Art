@@ -13,4 +13,5 @@ urlpatterns = [
     path('edit-account/lastname' , views.editLastName , name = 'edit-account-last-name'),
     path('edit-account/email' , views.editEmail, name = 'edit-account-email'),
     path('edit-account/password' , views.editPassword, name = 'edit-account-password'),
+    path('activate/<uidb64>/<token>', views.activate, name='activate'),
 ]
