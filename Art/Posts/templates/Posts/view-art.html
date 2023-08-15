@@ -68,7 +68,7 @@ Profile
   <div id="post-flex-container">
     {%for post in posts%}
     <div class="posts-container">
-      <a class="art-img" href="{%url 'view-art' post.id %}"><img class="img" src="{{post.art.url}}" style="max-width: 96%;" alt="{{post.title}}}"></a>
+      <a class="art-img" href="{%url 'view-art' post.id %}"><img class="img" src="{{post.art.url}}" alt="{{post.title}}}"></a>
       <br>
       <a href={%if post.user == request.user %} {%url 'profile' %}  {%else%} {%url 'view-profile' post.user.id %} {%endif%}><img style="max-width: 25px; border-radius: 25px; margin: 2%;" src="{{post.user.profile_data.profile_pic.url}}" alt=""></a>
       <a class="art-title" href="{%url 'view-art' post.id %}"><span>{{post.title}}</span></a>
