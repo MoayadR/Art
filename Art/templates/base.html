@@ -84,24 +84,13 @@
 
   {%block content%}
 
-  <div class="art-container">
-    <div class="carde carde_large">
-      {%for post in posts%}
-      <div id="posts-container">
-        <a href="{%url 'view-art' post.id %}"><img class="img" src="{{post.art.url}}" style="max-width: 25%; max-height: 25%; margin: 2%;" alt="{{post.title}}}"></a>
-        <a href={%if post.user == request.user %} {%url 'profile' %}  {%else%} {%url 'view-profile' post.user.id %} {%endif%}><img style="max-width: 25px; border-radius: 25px; margin: 2%;" src="{{post.user.profile_data.profile_pic.url}}" alt=""></a>
-        <span>{{post.title}}</span>
-      </div>
-      {% endfor %}
-    </div>
-
 
 
     {% endblock%}
 
     <script src="{% static 'Bootstrap/js/bootstrap.js' %}"></script>
     {%block scripts%}
-    <script src="{% static 'ART Gallery/base.js'%}"></script>
+
     {%endblock%}
     
     <script src = "{% static 'ART Gallery/dynamicContent.js'%}" ></script>

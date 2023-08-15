@@ -1,5 +1,5 @@
 var throttleTimer;
-const throttle = (callback, time) => {
+const throttle = (callback, time = 250) => {
   if (throttleTimer) return;
   throttleTimer = true;
   setTimeout(() => {
@@ -10,18 +10,17 @@ const throttle = (callback, time) => {
 
 
 let currentItems = 0;
-const containers = [...document.querySelectorAll("#posts-container")];
+const containers = [...document.querySelectorAll(".posts-container")];
 
 function dynamicfeed(){
   throttle(() =>{
-    let endOfPage = window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
-  if(endOfPage )
+  if((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight -2 )
   {
-    for(let i = currentItems;i<currentItems+5 && i<containers.length ; i++)
+    for(let i = currentItems;i<currentItems+15 && i<containers.length ; i++)
   {
-    containers[i].style.display = "inline";
+    containers[i].style.display = "block";
   }
-  currentItems += 5;
+  currentItems += 15;
   }
   })
 }

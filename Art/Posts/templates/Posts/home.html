@@ -1,28 +1,15 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {%block title%}
 Profile
 {%endblock%}
 
 
-{%block search%}
-{%endblock%}
+
 
 {%block content%}
-<div class="container-fluid">
-<div class="card" style="width: 100%; align-items: center;">
-    <img src="{{user.profile_data.profile_pic.url}}" style="max-width: 20%;" class="card-img-top" alt="profile_img">
-    <div class="card-body">
-      <p class="card-title"><b>{{user.email}}</b></p>
-      <p class="card-text">{{user.profile_data.bio}}</p>
-    </div>
-  </div>
-</div>
-
-  <hr>
-
-  <div id="post-grid-container">
+<div id="post-grid-container">
     {%for post in posts%}
     <div class="posts-container">
       <a href="{%url 'view-art' post.id %}"><img class="img" src="{{post.art.url}}" style="max-width: 75%;" alt="{{post.title}}}"></a>
@@ -32,8 +19,10 @@ Profile
     </div>
     {% endfor %}
 
-    {%block scripts%}
-    {%endblock%}
+{% endblock %}
 
 
+{%block scripts%}
+<script src="{% static 'ART Gallery/base.js'%}"></script>
 {%endblock%}
+

@@ -78,7 +78,7 @@ def home(request):
         
 
     context = {'posts' :post}
-    return render(request, 'base.html' , context)
+    return render(request, 'Posts/home.html' , context)
 
 @login_required(login_url='login')
 def createArt(request):
