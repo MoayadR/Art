@@ -9,7 +9,7 @@ Profile
 
 
 {%block content%}
-<div id="post-flex-container">
+<div id="post-grid-container">
     {%for post in posts%}
     <div class="posts-container">
       <a class="art-img" href="{%url 'view-art' post.id %}"><img class="img" src="{{post.art.url}}" alt="{{post.title}}}"></a>
