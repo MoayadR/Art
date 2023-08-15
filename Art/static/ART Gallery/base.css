@@ -116,15 +116,13 @@ li{
     display: none;
     text-align: center;
     flex-basis: 252px;
-
 }
 
 #post-flex-container
 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: baseline;
+    align-content: flex-start;
 }
 
 .art-img{
