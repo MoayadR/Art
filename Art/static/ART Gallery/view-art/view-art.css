@@ -39,7 +39,7 @@
   border-radius: 25px;
 }
 #delBtn{
-  width: 5%;
+  max-width: 25%;
   background-color:#fff;
 }
 #delBtn:hover{
@@ -49,7 +49,7 @@
 
 
 #changeBtn{
-  width: 5%;
+  max-width: 25%;
   background-color:#fff;
 }
 
@@ -59,7 +59,7 @@
 }
 
 #reportBtn{
-  width: 5%;
+  max-width: 25%;
   background-color:#fff;
 }
 
