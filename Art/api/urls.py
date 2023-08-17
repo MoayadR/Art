@@ -9,4 +9,5 @@ urlpatterns = [
     path('post/love/<int:postID>' , views.getUserLove),
     path('post/love/add/<int:postID>' , views.addUserLove),
     path('post/love/remove/<int:postID>' , views.removeUserLove),
+    path('ban/' , views.banUser),
 ]

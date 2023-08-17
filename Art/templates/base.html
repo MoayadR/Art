@@ -59,6 +59,12 @@
             <span class="sr-only"></span>
           </button>
           <div class="dropdown-menu dropdown-menu-end">
+            {% if request.user.is_superuser or request.user.is_staff %}
+            <a href="{%url 'view-reports'%}" class="dropdown-item">Reports</a>
+            {% endif %}
+            {% if request.user.is_superuser %}
+            <a href="/admin" class="dropdown-item">Admin Panel</a>
+            {% endif %}
             <a class="dropdown-item " href="{%url 'logout' %}">Logout</a>
           </div>
         </div>

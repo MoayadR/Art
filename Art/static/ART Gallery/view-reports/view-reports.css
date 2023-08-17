@@ -1,0 +1,64 @@
+#Title{
+    margin: 1%;
+    text-align: center;
+    margin-bottom: 2%;
+    text-decoration: underline;
+    color: #212529 ;
+}
+
+#reports-flex-container{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.link{
+    color: black;
+    text-decoration: none;
+}
+
+.link-img{
+    cursor: zoom-in;
+}
+
+.link:hover{
+    color: rgb(136, 136, 136);
+    text-decoration: none;
+}
+
+
+.reported-img{
+    max-width: 60%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
+    border-radius: 25px;
+}
+.reported-img:hover{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+}
+
+.reports{
+    width: 100%;
+    flex: 1;
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap: 10px;
+}
+
+.reported-art{
+    text-align: center;
+}
+
+
+.action-buttons-container{
+    width: 100%;
+    display: flex;
+    justify-content:end;
+    overflow: hidden;
+    gap: 10px;
+}

@@ -149,6 +149,14 @@ def deleteArt(request , id):
     return redirect("home")
 
 @login_required(login_url='login')
+def deleteReportedArt(request , id):
+    if request.user.is_superuser:
+        Post.objects.get(id = id).delete()
+        return redirect("view-reports")
+
+
+
+@login_required(login_url='login')
 def changeArt(request , id):
     object = Post.objects.get(id = id)
     if request.method == "POST":
@@ -194,3 +202,18 @@ def editComment(request , artID , id):
 def deleteComment(request , artID , id):
     object = Comment.objects.get(id = id).delete()
     return redirect("view-art" , artID)
+
+
+@login_required(login_url='login')
+def viewReports(request):
+    if request.user.is_superuser == False and request.user.is_staff == False:
+        return redirect('home')            
+    reports = Reported.objects.all()
+    return render(request , "Posts/view-reports.html" , {"reports" : reports})
+
+@login_required(login_url='login')
+def deleteReport(request , id):
+    if request.user.is_superuser == False and request.user.is_staff == False:
+        return redirect('home')
+    Reported.objects.get(id = id).delete()
+    return redirect('view-reports')

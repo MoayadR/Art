@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.contrib.auth.models import User
 from Posts.models import Comment , Post
+from django.views.decorators.csrf import csrf_exempt
 
 import simplejson as json
 
@@ -56,3 +57,13 @@ def removeUserLove(request , postID):
     post = Post.objects.get(id = postID )
     post.love.remove(request.user)
     return JsonResponse({"status":"Removed Love"})
+
+@csrf_exempt
+def banUser(request):
+    # make a banned model for user
+    if request.user.is_superuser == True or request.user.is_staff == True:
+        data = json.loads(request.body)
+        object = User.objects.get(id = data['id'])
+        object.is_active = False
+        object.save()
+        return HttpResponse("Banned Successfully")

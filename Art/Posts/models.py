@@ -31,7 +31,7 @@ class Comment(models.Model):
 
 class Reported(models.Model):
     reason = models.TextField()
-    user = models.ForeignKey(User , on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User , on_delete=models.CASCADE)
     post = models.ForeignKey(Post , on_delete=models.CASCADE)
 
     def __str__(self):

@@ -21,12 +21,12 @@ Profile
   
   {% if art.user == request.user %}
   <div id="modify-div">
-    <a href="{% url 'delete-art' art.id %}"> <button class="mt-2 me-2" id="delBtn">Delete</button></a>
-    <a href="{% url 'change-art' art.id %}"><button class="mt-2 me-2" id="changeBtn">Change</button></a>
+    <a href="{% url 'delete-art' art.id %}"> <button class="btn btn-danger mt-2 me-2" >Delete</button></a>
+    <a href="{% url 'change-art' art.id %}"><button class="btn btn-primary mt-2 me-2" >Change</button></a>
   </div>
   {% else %}
   <div id="modify-div">
-    <a href="{%url 'report-art' art.id%}"> <button class="mt-2 me-2" id="reportBtn">Report</button></a>
+    <a href="{%url 'report-art' art.id%}"> <button class="btn btn-danger mt-2 me-2">Report</button></a>
   </div>
   {% endif %}
 
@@ -70,7 +70,7 @@ Profile
     <div class="posts-container">
       <a class="art-img" href="{%url 'view-art' post.id %}"><img class="img" src="{{post.art.url}}" alt="{{post.title}}}"></a>
       <br>
-      <a href={%if post.user == request.user %} {%url 'profile' %}  {%else%} {%url 'view-profile' post.user.id %} {%endif%}><img id="profile-small-icon"   src="{{post.user.profile_data.profile_pic.url}}" alt=""></a>
+      <a href={%if post.user == request.user %} {%url 'profile' %}  {%else%} {%url 'view-profile' post.user.id %} {%endif%}><img id="profile-small-icon" src="{{post.user.profile_data.profile_pic.url}}" alt=""></a>
       <a class="art-title" href="{%url 'view-art' post.id %}"><span>{{post.title}}</span></a>
     </div>
     {% endfor %}

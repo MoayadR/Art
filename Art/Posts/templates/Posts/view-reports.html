@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'ART Gallery/view-reports/view-reports.css'%}">
+{% endblock %}
+
+{%block title%}
+Reports
+{%endblock%}
+
+
+{%block content%}
+
+<h1 id="Title">Reports</h1>
+    <div id="reports-flex-container">
+        {% for report in reports %}
+        <div class="reports">
+            <div class="action-buttons-container">
+                <button class="btn btn-danger" value="{{report.post.user.id}}" onclick="banUser(this)">Ban User</button>
+                <a href="{% url 'delete-report' report.id%}"><button class="btn btn-primary">Delete Report</button></a>
+                <a href="{% url 'delete-reported-art' report.post.id %}"><button class="btn btn-dark">Delete Art</button></a>
+
+            </div>
+            <div class="reported-user">
+                <a class="link" href="{% url 'view-profile' report.post.user.id%}"><h3>@{{report.post.user.username}}</h3></a>
+                
+            </div>
+            <div class="reported-art">
+                <a class="link link-img" href="{% url 'view-art' report.post.id%}"><img class="reported-img" src="{{report.post.art.url}}" alt="art-img"></a>
+                
+            </div>
+            <div class="reporter">
+                <h3>
+                    Reported By: <a class="link" href="{% url 'view-profile' report.user.id %}">@{{report.user.username}}</a>
+                </h3>
+            </div>
+            <div class="reason">
+                <p>{{report.reason}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+
+
+{% block scripts %}
+<script src="{% static 'ART Gallery/view-reports/view-reports.js'%}"></script>
+{% endblock %}

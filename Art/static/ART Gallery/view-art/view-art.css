@@ -38,32 +38,3 @@
 #modify-div button{
   border-radius: 25px;
 }
-#delBtn{
-  max-width: 25%;
-  background-color:#fff;
-}
-#delBtn:hover{
-  transition-duration: 0.5s;
-  background-color:red;
-}
-
-
-#changeBtn{
-  max-width: 25%;
-  background-color:#fff;
-}
-
-#changeBtn:hover{
-  transition-duration: 0.5s;
-  background-color:rgb(251, 255, 0);
-}
-
-#reportBtn{
-  max-width: 25%;
-  background-color:#fff;
-}
-
-#reportBtn:hover{
-  transition-duration: 0.5s;
-  background-color:red;
-}
