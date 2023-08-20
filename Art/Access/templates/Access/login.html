@@ -1,12 +1,22 @@
 {% extends 'base_not_signed_in.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {%block title%}
 Login
 {%endblock%}
 
+{% block links%}
+<link rel="stylesheet" href="{% static 'ART Gallery/login/login.css'%}">
+{% endblock%}
+
 {%block content%}
-<form class="m-3" action="" method="POST">
+<div id="form-container">
+    <div id="logo-container">
+        <img id="logo" src="{% static 'ART Gallery/1.png'%}" alt="Art-Logo">
+    </div>
+    <h1>Login</h1>
+    <form class="m-3" action="" method="POST">
     {% csrf_token %}
     {{form|crispy}}
     <button type="submit" class="btn btn-primary w-10 text-center m-3 ms-0" value="Login">Login</button>
@@ -15,6 +25,8 @@ Login
         <a href="{% url 'register' %}" class="link-primary">Register</a>
     </p>
 </form>
+</div>
+
 
 
 {%endblock%}

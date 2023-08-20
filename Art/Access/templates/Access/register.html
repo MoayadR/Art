@@ -3,20 +3,32 @@
 {% load crispy_forms_tags %}
 
 
-
-
 {%block title%}
 Register
 {%endblock%}
 
+
+{% block links%}
+<link rel="stylesheet" href="{% static 'ART Gallery/register/register.css'%}">
+{% endblock%}
+
+
 {%block content%}
 
+<div id="form-container">
+    <div id="logo-container">
+    <img id="logo" src="{% static 'ART Gallery/1.png'%}" alt="Art-Logo">
+</div>
+<h1>Register</h1>
 <form class="m-3" action="" method="POST" id="userForm">
     {% csrf_token %}
     {{form | crispy}}
     <button type="submit" class="btn btn-primary w-10 text-center m-3 ms-0" value="Register">Register</button>
     <p class=""> Already have an account? <a href="{% url 'login' %}" class="link-primary">Login</a></p>
 </form>
+</div>
+
+
 
 
 {%block scripts%}

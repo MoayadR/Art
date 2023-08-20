@@ -15,7 +15,9 @@ Edit Profile
 
 {%block content%}
 
+<div id="form-container">
 <form class="m-3" action="" method="POST" enctype="multipart/form-data">
+    <h1>Profile Data</h1>
     {% csrf_token %}
     {% for field in form %}
     {% if field.name != "user" %}
@@ -32,6 +34,8 @@ Edit Profile
 
     <button type="submit" class="btn btn-primary w-10 text-center m-3 ms-0" value="Update">Update</button>
 </form>
+</div>
+
 
 {%block scripts%}
 {%endblock%}

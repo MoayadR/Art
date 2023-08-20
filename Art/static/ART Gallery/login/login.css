@@ -1,0 +1,27 @@
+#form-container{
+    display: flex;
+    width: 80%;
+    margin: 0  auto;
+    margin-top: 50px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid rgb(223 223 223);
+    border-radius: 15px;
+}
+#logo-container{
+    text-align: center;
+}
+
+#logo {
+    border-radius: 25px;
+    width: 70%;
+}
+
+form{
+    width: 80%;
+}
+
+input{
+    border-radius: 15px !important;    
+}
