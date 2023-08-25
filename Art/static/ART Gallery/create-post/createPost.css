@@ -12,10 +12,6 @@ ul li{
     margin: 5px auto;
 }
 
-ul li:hover{
-    transition-duration: 0.5s;
-    background-color:#ced4da ;
-}
 
 #SelectedTags button:hover{
     background-color: red;

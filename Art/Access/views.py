@@ -31,7 +31,7 @@ def loginUser(request):
                 return redirect('home')
             
             #None User
-            if request.user.is_active == False:
+            if user != None and user.is_active == False:
                 messages.success(request , 'Please Activate your account first.')
                 return redirect('login')
             messages.success(request , 'Wrong credentials please try again..')
