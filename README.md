@@ -1,5 +1,7 @@
 # ART: A Visual Discovery Engine for Art
 
+![3](https://github.com/MoayadR/Art/assets/92552416/64c6c6af-8a7e-4c44-8294-da6d90b90fbd)
+
 ## What is ART?
 
 ART is a visual discovery engine that helps users find new and interesting high-quality art, as well as comment, love, react, and report images and videos. ART uses a combination of machine learning and natural language processing to understand the content of images and videos, and to identify the relationships between them. This allows ART to recommend art that is relevant to each user's individual interests.
