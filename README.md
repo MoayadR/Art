@@ -1,6 +1,6 @@
 # ART: A Visual Discovery Engine for Art
-<img align="center" width="200" src="![3](https://github.com/MoayadR/Art/assets/92552416/64c6c6af-8a7e-4c44-8294-da6d90b90fbd)">
 
+![3](https://github.com/MoayadR/Art/assets/92552416/a77b4e80-b8ea-4725-a0e9-9ba54009ef0d)
 
 ## What is ART?
 
