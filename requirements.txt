@@ -5,7 +5,7 @@ Django==4.2.5
 django-crispy-forms==1.14.0
 filelock==3.12.3
 greenlet==2.0.2
-Pillow==10.0.1
+Pillow==10.2.0
 platformdirs==3.10.0
 playwright==1.38.0
 playwright-stealth==1.0.6
