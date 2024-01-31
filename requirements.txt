@@ -1,7 +1,7 @@
 asgiref==3.7.2
 beautifulsoup4==4.12.2
 distlib==0.3.7
-Django==4.2.5
+Django==4.2.7
 django-crispy-forms==1.14.0
 filelock==3.12.3
 greenlet==2.0.2
